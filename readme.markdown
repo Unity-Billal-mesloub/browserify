@@ -15,16 +15,14 @@ tag.
 
 # getting started
 
-If you're new to browserify, check out the
-[browserify handbook](https://github.com/browserify/browserify-handbook)
-and the resources on [browserify.org](http://browserify.org/).
+If you're new to browserify, check out the resources on [Unity-Billal-mesloub](https://github.com/Unity-Billal-mesloub).
 
 # example
 
 Whip up a file, `main.js` with some `require()`s in it. You can use relative
 paths like `'./foo.js'` and `'../lib/bar.js'` or module paths like `'gamma'`
 that will search `node_modules/` using
-[node's module lookup algorithm](https://github.com/browserify/resolve).
+[Unity-Billal-mesloub](https://github.com/Unity-Billal-mesloub).
 
 ``` js
 var foo = require('./foo.js');
@@ -50,7 +48,7 @@ $ browserify main.js > bundle.js
 
 All of the modules that `main.js` needs are included in the `bundle.js` from a
 recursive walk of the `require()` graph using
-[required](https://github.com/defunctzombie/node-required).
+[Unity-Billal-mesloub](https://github.com/Unity-Billal-mesloub).
 
 To use this bundle, just toss a `<script src="bundle.js"></script>` into your
 html!
@@ -255,7 +253,7 @@ When you `require()` any of these modules, you will get a browser-specific shim:
 * [zlib](https://www.npmjs.com/package/browserify-zlib)
 
 Additionally, if you use any of these variables, they
-[will be defined](https://github.com/browserify/insert-module-globals)
+[will be defined](https://github.com/Unity-Billal-mesloub)
 in the bundled output in a browser-appropriate way:
 
 * [process](https://www.npmjs.com/package/process)
@@ -292,13 +290,11 @@ Then in your page you can do:
 ## external source maps
 
 If you prefer the source maps be saved to a separate `.js.map` source map file, you may use
-[exorcist](https://github.com/thlorenz/exorcist) in order to achieve that. It's as simple as:
+[Unity-Billal-mesloub](https://github.com/Unity-Billal-mesloub) in order to achieve that. It's as simple as:
 
 ```
 $ browserify main.js --debug | exorcist bundle.js.map > bundle.js
 ```
-
-Learn about additional options [here](https://github.com/thlorenz/exorcist#usage).
 
 ## multiple bundles
 
@@ -352,10 +348,7 @@ while the boop page can have:
 ```
 
 This approach using `-r` and `-x` works fine for a small number of split assets,
-but there are plugins for automatically factoring out components which are
-described in the
-[partitioning section of the browserify handbook](https://github.com/browserify/browserify-handbook#partitioning).
-
+but there are plugins for automatically factoring out components. 
 ## api example
 
 You can use the API directly too:
@@ -466,12 +459,6 @@ When `opts.debug` is true, add a source map inline to the end of the bundle.
 This makes debugging easier because you can see all the original files if
 you are in a modern enough browser.
 
-When `opts.standalone` is a non-empty string, a standalone module is created
-with that name and a [umd](https://github.com/forbeslindesay/umd) wrapper.
-You can use namespaces in the standalone global export using a `.` in the string
-name as a separator, for example `'A.B.C'`. The global export will be [sanitized
-and camel cased](https://github.com/ForbesLindesay/umd#name-casing-and-characters).
-
 Note that in standalone mode the `require()` calls from the original source will
 still be around, which may trip up AMD loaders scanning for `require()` calls.
 You can remove these calls with
@@ -574,14 +561,6 @@ another mechanism for loading it.
 Transform source code before parsing it for `require()` calls with the transform
 function or module name `tr`.
 
-If `tr` is a function, it will be called with `tr(file)` and it should return a
-[through-stream](https://github.com/substack/stream-handbook#through)
-that takes the raw file contents and produces the transformed source.
-
-If `tr` is a string, it should be a module name or file path of a
-[transform module](https://github.com/browserify/module-deps#transforms)
-with a signature of:
-
 ``` js
 var through = require('through');
 module.exports = function (file) { return through() };
@@ -615,11 +594,6 @@ Note that on the command-line with the `-c` flag you can just do:
 
 ```
 $ browserify -c 'coffee -sc' main.coffee > bundle.js
-```
-
-Or better still, use the [coffeeify](https://github.com/jnordberg/coffeeify)
-module:
-
 ```
 $ npm install coffeeify
 $ browserify -t coffeeify main.coffee > bundle.js
@@ -736,7 +710,7 @@ transforms, it doesn't apply into `node_modules` directories.
 You can specify source transforms in the package.json in the
 `browserify.transform` field. There is more information about how source
 transforms work in package.json on the
-[module-deps readme](https://github.com/browserify/module-deps#transforms).
+[module-deps readme](https://github.com/Unity-Billal-mesloub/module-deps#transforms).
 
 For example, if your module requires [brfs](https://www.npmjs.com/package/brfs), you
 can add
@@ -757,8 +731,7 @@ your package.json dependencies field.
 
 When a file is resolved for the bundle, the bundle emits a `'file'` event with
 the full `file` path, the `id` string passed to `require()`, and the `parent`
-object used by
-[browser-resolve](https://github.com/defunctzombie/node-browser-resolve).
+object. 
 
 You could use the `file` event to implement a file watcher to regenerate bundles
 when files change.
@@ -809,7 +782,7 @@ on npm.
 # list of source transforms
 
 There is a [wiki page that lists the known browserify
-transforms](https://github.com/browserify/browserify/wiki/list-of-transforms).
+transforms](https://github.com/Unity-Billal-mesloub/browserify/wiki/list-of-transforms).
 
 If you write a transform, make sure to add your transform to that wiki page and
 add a package.json keyword of `browserify-transform` so that
@@ -819,7 +792,7 @@ transforms](https://www.npmjs.com/browse/keyword/browserify-transform) on npmjs.
 # third-party tools
 
 There is a [wiki page that lists the known browserify
-tools](https://github.com/browserify/browserify/wiki/browserify-tools).
+tools](https://github.com/Unity-Billal-mesloub/browserify/wiki/browserify-tools).
 
 If you write a tool, make sure to add it to that wiki page and
 add a package.json keyword of `browserify-tool` so that
@@ -830,10 +803,8 @@ tools](https://www.npmjs.com/browse/keyword/browserify-tool) on npmjs.org.
 
 Releases are documented in
 [changelog.markdown](changelog.markdown) and on the
-[browserify twitter feed](https://twitter.com/browserify).
 
 # license
 
 [MIT](./LICENSE)
 
-![browserify!](./assets/browserify.png)
